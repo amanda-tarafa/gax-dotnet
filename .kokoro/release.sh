@@ -10,9 +10,12 @@ cd ..
 
 export NUGET_API_KEY="$(cat "$KOKORO_KEYSTORE_DIR"/73609_google-apis-nuget-api-key)"
 
+echo "checking api key"
+echo $NUGET_API_KEY
+
 # Build the release and run the tests.
-./buildrelease.sh $(git rev-parse HEAD)
+#./buildrelease.sh $(git rev-parse HEAD)
 
 # Push the changes to nuget.
-cd ./releasebuild/nuget
-for pkg in *.nupkg; do dotnet nuget push -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY $pkg; done
+# cd ./releasebuild/nuget
+# for pkg in *.nupkg; do dotnet nuget push -s https://api.nuget.org/v3/index.json -k $NUGET_API_KEY $pkg; done
